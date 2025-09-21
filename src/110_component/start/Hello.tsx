@@ -1,9 +1,9 @@
 type Props = {
-  name: string;
+  text: string;
 };
 
-const Hello = ({ name }: Props) => {
-  return <h1>{name}</h1>;
+const Hello = ({ text }: Props) => {
+  return <h1>Hello {text}</h1>;
 };
 
 export default Hello;

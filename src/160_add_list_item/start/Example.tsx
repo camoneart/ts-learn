@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TaskList from "./TaskList";
+import TodoList from "./TodoList";
 
 export type Todo = {
   id: number;
@@ -8,32 +8,25 @@ export type Todo = {
 
 const Example = () => {
   const [inputText, setInputText] = useState("");
-  const [todos, setTodos] = useState<Todo[]>([
-    {
-      id: 0,
-      text: "todo1",
-    },
-    {
-      id: 1,
-      text: "todo2",
-    },
-  ]);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
+  };
 
-  const addTodoItem = () => {
-    setTodos((state) => [...state, { id: todos.length, text: inputText }]);
-    setInputText('');
+  const handleClick = () => {
+    setTodos((state) => [...state, { id: state.length + 1, text: inputText }]);
+    setInputText("");
   };
 
   return (
-    <>
-      <input type="text" value={inputText} onChange={changeHandler} />
-      <button onClick={addTodoItem}>add</button>
+    <div>
+      <h3>Todoリスト</h3>
+      <input type="text" value={inputText} onChange={handleChange} />
+      <button disabled={!inputText} onClick={handleClick}>add</button>
 
-      <TaskList todos={todos} />
-    </>
+      <TodoList todos={todos} />
+    </div>
   );
 };
 

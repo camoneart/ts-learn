@@ -9,11 +9,12 @@ const Example = () => {
   num = 101;
   console.log(num);
 
-  let bignum: bigint = 100n;
-  console.log(bignum);
+  // リテラル型
+  let trueVal: true = true;
+  let num123: 123 = 123;
+  let strHello: "Hello" = "Hello";
 
-  let bool: boolean = true;
-  console.log(bool);
+  
 };
 
 export default Example;
